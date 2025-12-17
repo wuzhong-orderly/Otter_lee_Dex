@@ -40,7 +40,7 @@ export const getEvmConnectors = (): CreateConnectorFn[] => {
           description:
             getRuntimeConfig("VITE_APP_DESCRIPTION") || "Orderly Application",
           url: window.location.origin,
-          icons: [`${window.location.origin}/favicon.webp`],
+          icons: [`${window.location.origin}/favicon.png`],
         },
       })
     );
@@ -115,13 +115,13 @@ export const getEvmInitialConfig = () => {
 
   return wallets.length > 0
     ? {
-        options: {
-          wallets,
-          appMetadata: {
-            name: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
-            description: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
-          },
+      options: {
+        wallets,
+        appMetadata: {
+          name: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
+          description: getRuntimeConfig("VITE_ORDERLY_BROKER_NAME"),
         },
-      }
+      },
+    }
     : undefined;
 };

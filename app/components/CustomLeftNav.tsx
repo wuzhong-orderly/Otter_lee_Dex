@@ -13,18 +13,18 @@ import { getRuntimeConfig, getRuntimeConfigBoolean } from "@/utils/runtime-confi
 import { withBasePath } from "@/utils/base-path";
 
 type LeftNavUIProps = LeftNavProps &
-  {
-    className?: string;
-    logo?: {
-      src: string;
-      alt: string;
-    };
-    externalLinks?: Array<{
-      name: string;
-      href: string;
-      target?: string;
-    }>;
+{
+  className?: string;
+  logo?: {
+    src: string;
+    alt: string;
   };
+  externalLinks?: Array<{
+    name: string;
+    href: string;
+    target?: string;
+  }>;
+};
 
 const LeftNavUI: FC<LeftNavUIProps> = (props) => {
   const showModal = useCallback(() => {
@@ -63,11 +63,11 @@ const LeftNavSheet = modal.create<LeftNavUIProps>((props) => {
           <div className="oui-mt-[6px] oui-flex oui-h-[44px] oui-items-center">
             {
               getRuntimeConfigBoolean('VITE_HAS_PRIMARY_LOGO')
-                ? <img src={withBasePath("/logo.webp")} alt="logo" className="oui-h-[32px]" />
+                ? <img src={withBasePath("/logo.png")} alt="logo" className="oui-h-[32px]" />
                 : <h1 className="oui-text-base-contrast-80 oui-font-bold">{getRuntimeConfig('VITE_ORDERLY_BROKER_NAME')}</h1>
             }
           </div>
-          
+
           <div className="oui-flex oui-h-[calc(100vh-120px)] oui-flex-col oui-items-start oui-overflow-y-auto">
             {Array.isArray(props?.menus) && props.menus.length > 0 && (
               <>
@@ -80,7 +80,7 @@ const LeftNavSheet = modal.create<LeftNavUIProps>((props) => {
                 ))}
               </>
             )}
-            
+
             {Array.isArray(props?.externalLinks) && props.externalLinks.length > 0 && (
               <>
                 <div className="oui-w-full oui-border-t oui-border-line-12 oui-my-2 oui-bg-base-3"></div>

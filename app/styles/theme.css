@@ -3,11 +3,11 @@
   --oui-font-size-base: 16px;
 
   /* 🌟 Pokemon Theme - Bright & Colorful! 🌟 */
-  /* Primary: Pikachu Yellow - Darker for contrast */
-  --oui-color-primary: 255 200 0;
-  --oui-color-primary-light: 255 220 50;
-  --oui-color-primary-darken: 220 170 0;
-  --oui-color-primary-contrast: 0 0 0;
+  /* Primary: Charmander Orange */
+  --oui-color-primary: 255 140 0;
+  --oui-color-primary-light: 255 180 50;
+  --oui-color-primary-darken: 220 100 0;
+  --oui-color-primary-contrast: 255 255 255;
 
   /* Links: Darker Electric Blue */
   --oui-color-link: 30 100 220;
@@ -27,7 +27,7 @@
   /* Success: Bulbasaur Green */
   --oui-color-success: 0 230 118;
   --oui-color-success-light: 102 255 178;
-  --oui-color-success-darken: 0 190 90;
+  --oui-color-success-darken: 255 140 0;
   --oui-color-success-contrast: 0 0 0;
 
   /* Warning: Jigglypuff Pink */
@@ -36,24 +36,24 @@
   --oui-color-warning-darken: 255 102 178;
   --oui-color-warning-contrast: 0 0 0;
 
-  /* Fill: Clean White/Light Blue Background */
-  --oui-color-fill: 255 255 255;
-  --oui-color-fill-active: 240 247 255;
+  /* Fill: Dark Blue with Purple/Green touch */
+  --oui-color-fill: 20 30 50;
+  --oui-color-fill-active: 30 40 65;
 
-  /* Base Colors: Better Contrast */
-  --oui-color-base-1: 255 255 255;
-  --oui-color-base-2: 245 248 252;
-  --oui-color-base-3: 230 238 248;
-  --oui-color-base-4: 210 225 242;
-  --oui-color-base-5: 190 210 235;
-  --oui-color-base-6: 170 195 228;
-  --oui-color-base-7: 150 180 220;
-  --oui-color-base-8: 130 165 210;
-  --oui-color-base-9: 110 150 200;
-  --oui-color-base-10: 90 135 190;
+  /* Base Colors: Dark Night Theme */
+  --oui-color-base-1: 20 30 50;
+  --oui-color-base-2: 25 35 55;
+  --oui-color-base-3: 30 40 60;
+  --oui-color-base-4: 35 45 65;
+  --oui-color-base-5: 40 50 70;
+  --oui-color-base-6: 50 60 80;
+  --oui-color-base-7: 60 70 90;
+  --oui-color-base-8: 80 90 110;
+  --oui-color-base-9: 100 110 130;
+  --oui-color-base-10: 120 130 150;
 
   --oui-color-base-foreground: 255 255 255;
-  --oui-color-line: 100 150 220;
+  --oui-color-line: 255 140 50;
 
   /* Trading: Squirtle Blue vs Charmander Orange */
   --oui-color-trading-loss: 255 102 51;
@@ -83,8 +83,8 @@
   --oui-gradient-warning-start: 255 153 204;
   --oui-gradient-warning-end: 255 102 178;
 
-  --oui-gradient-neutral-start: 204 236 255;
-  --oui-gradient-neutral-end: 230 245 255;
+  --oui-gradient-neutral-start: 20 30 50;
+  --oui-gradient-neutral-end: 255 140 0;
 
   /* rounded */
   --oui-rounded-sm: 2px;
@@ -110,5 +110,5 @@ body {
   font-weight: 500 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(20, 20, 30) !important;
+  color: rgb(255, 255, 255) !important;
 }

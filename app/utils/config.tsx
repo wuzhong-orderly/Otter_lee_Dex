@@ -59,33 +59,33 @@ const DEFAULT_ENABLED_MENUS = [
 
 const getCustomMenuItems = (): MainNavItem[] => {
   const customMenusEnv = getRuntimeConfig('VITE_CUSTOM_MENUS');
-  
+
   if (!customMenusEnv || typeof customMenusEnv !== 'string' || customMenusEnv.trim() === '') {
     return [];
   }
-  
+
   try {
     // Parse delimiter-separated menu items
     // Expected format: "Documentation,https://docs.example.com;Blog,https://blog.example.com;Support,https://support.example.com"
     const menuPairs = customMenusEnv.split(';').map(pair => pair.trim()).filter(pair => pair.length > 0);
-    
+
     const validCustomMenus: MainNavItem[] = [];
-    
+
     for (const pair of menuPairs) {
       const [name, href] = pair.split(',').map(item => item.trim());
-      
+
       if (!name || !href) {
         console.warn("Invalid custom menu item format. Expected 'name,url':", pair);
         continue;
       }
-      
+
       validCustomMenus.push({
         name,
         href,
         target: "_blank",
       });
     }
-    
+
     return validCustomMenus;
   } catch (e) {
     console.warn("Error parsing VITE_CUSTOM_MENUS:", e);
@@ -95,14 +95,14 @@ const getCustomMenuItems = (): MainNavItem[] => {
 
 const getEnabledMenus = () => {
   const enabledMenusEnv = getRuntimeConfig('VITE_ENABLED_MENUS');
-  
+
   if (!enabledMenusEnv || typeof enabledMenusEnv !== 'string' || enabledMenusEnv.trim() === '') {
     return DEFAULT_ENABLED_MENUS;
   }
-  
+
   try {
     const enabledMenuNames = enabledMenusEnv.split(',').map(name => name.trim());
-    
+
     const enabledMenus = [];
     for (const menuName of enabledMenuNames) {
       const menuItem = ALL_MENU_ITEMS.find(item => item.name === menuName);
@@ -110,7 +110,7 @@ const getEnabledMenus = () => {
         enabledMenus.push(menuItem);
       }
     }
-    
+
     return enabledMenus.length > 0 ? enabledMenus : DEFAULT_ENABLED_MENUS;
   } catch (e) {
     console.warn("Error parsing VITE_ENABLED_MENUS:", e);
@@ -120,10 +120,10 @@ const getEnabledMenus = () => {
 
 const getPnLBackgroundImages = (): string[] => {
   const useCustomPnL = getRuntimeConfigBoolean('VITE_USE_CUSTOM_PNL_POSTERS');
-  
+
   if (useCustomPnL) {
     const customPnLCount = getRuntimeConfigNumber('VITE_CUSTOM_PNL_POSTER_COUNT');
-    
+
     if (isNaN(customPnLCount) || customPnLCount < 1) {
       return [
         withBasePath("/pnl/poster_bg_1.png"),
@@ -132,15 +132,15 @@ const getPnLBackgroundImages = (): string[] => {
         withBasePath("/pnl/poster_bg_4.png"),
       ];
     }
-    
+
     const customPosters: string[] = [];
     for (let i = 1; i <= customPnLCount; i++) {
       customPosters.push(withBasePath(`/pnl/poster_bg_${i}.webp`));
     }
-    
+
     return customPosters;
   }
-  
+
   return [
     withBasePath("/pnl/poster_bg_1.png"),
     withBasePath("/pnl/poster_bg_2.png"),
@@ -166,11 +166,11 @@ const getBottomNavIcon = (menuName: string) => {
 
 const getColorConfig = (): ColorConfigInterface | undefined => {
   const customColorConfigEnv = getRuntimeConfig('VITE_TRADING_VIEW_COLOR_CONFIG');
-  
+
   if (!customColorConfigEnv || typeof customColorConfigEnv !== 'string' || customColorConfigEnv.trim() === '') {
     return undefined;
   }
-  
+
   try {
     const customColorConfig = JSON.parse(customColorConfigEnv);
     return customColorConfig;
@@ -187,14 +187,14 @@ export const useOrderlyConfig = () => {
   return useMemo<OrderlyConfig>(() => {
     const enabledMenus = getEnabledMenus();
     const customMenus = getCustomMenuItems();
-    
+
     const translatedEnabledMenus = enabledMenus.map(menu => ({
       name: t(menu.translationKey),
       href: menu.href,
     }));
-    
+
     const allMenuItems = [...translatedEnabledMenus, ...customMenus];
-    
+
     const supportedBottomNavMenus = ["Trading", "Portfolio", "Markets", "Leaderboard"];
     const bottomNavMenus = enabledMenus
       .filter(menu => supportedBottomNavMenus.includes(menu.name))
@@ -240,7 +240,7 @@ export const useOrderlyConfig = () => {
               "oui-overflow-hidden",
             )}
           >
-            { isMobile && 
+            {isMobile &&
               <CustomLeftNav
                 menus={translatedEnabledMenus}
                 externalLinks={customMenus}
@@ -284,7 +284,7 @@ export const useOrderlyConfig = () => {
         appIcons: {
           main:
             getRuntimeConfigBoolean('VITE_HAS_PRIMARY_LOGO')
-              ? { component: <img src={withBasePath("/logo.webp")} alt="logo" style={{ height: "42px" }} /> }
+              ? { component: <img src={withBasePath("/logo.png")} alt="logo" style={{ height: "42px" }} /> }
               : { img: withBasePath("/orderly-logo.svg") },
           secondary: {
             img: getRuntimeConfigBoolean('VITE_HAS_SECONDARY_LOGO')

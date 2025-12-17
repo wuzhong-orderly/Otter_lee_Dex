@@ -117,7 +117,7 @@ function generateManifest() {
 
   console.log(`✓ Using base path: ${basePath}`);
 
-  const iconPath = withBasePath("/favicon.webp", basePath);
+  const iconPath = withBasePath("/favicon.png", basePath);
   const startUrl = withBasePath("/", basePath);
 
   const manifest = {

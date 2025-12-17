@@ -3,11 +3,18 @@ import { generatePageTitle } from "@/utils/utils";
 import { getPageMeta } from "@/utils/seo";
 import { renderSEOTags } from "@/utils/seo-tags";
 import { useState } from "react";
+import { useAppContext } from "@orderly.network/react-app";
+
 
 export default function LeaderboardIndex() {
   const pageMeta = getPageMeta();
   const pageTitle = generatePageTitle("Leaderboard");
   const [campaignId, setCampaignId] = useState("128");
+
+
+  const { currentChainId } = useAppContext();
+  console.log("Current Chain ID:", currentChainId);
+
 
   return (
     <>
@@ -29,7 +36,7 @@ const campaigns = [
     campaign_id: "25",
     title: "PURPSTV Trading Campaign Vol-1",
     description: "A new era begins. PURPSTV is here.",
-    image: "/logo.webp",
+    image: "/logo.png",
     start_time: new Date("2025-10-25T00:00:00Z").toISOString(),
     end_time: new Date("2025-11-24T23:59:59Z").toISOString(),
     href: "/",
