@@ -10,6 +10,7 @@ import {
   usePositionStream,
   useComputedLTV,
 } from "@orderly.network/hooks";
+import { account } from "@orderly.network/perp";
 import { useTranslation } from "@orderly.network/i18n";
 import { useDataTap } from "@orderly.network/react-app";
 import { AccountStatusEnum, NetworkId } from "@orderly.network/types";
@@ -33,9 +34,9 @@ export const useAssetViewScript = () => {
   const { freeCollateral } = useCollateral({
     dp: 2,
   });
-  const { marginRatio, mmr } = useMarginRatio();
+  const { marginRatio, currentLeverage, mmr } = useMarginRatio();
   const isConnected = state.status >= AccountStatusEnum.Connected;
-  const [{ aggregated }, positionsInfo] = usePositionStream();
+  const [{ aggregated, rows }, positionsInfo] = usePositionStream();
   const marginRatioVal = useMemo(() => {
     return Math.min(
       10,
@@ -112,12 +113,21 @@ export const useAssetViewScript = () => {
     });
   }, [visible]);
 
+  const totalMM = useMemo(() => {
+    return rows?.reduce((sum, pos) => sum + (pos.mm || 0), 0) || 0;
+  }, [rows]);
+
+
   const currentLtv = useComputedLTV();
+
+  const _currentLtv = useDataTap(currentLtv) ?? undefined;
   const _freeCollateral = useDataTap(freeCollateral) ?? undefined;
   const _marginRatioVal = useDataTap(marginRatioVal) ?? undefined;
   const _mmr = useDataTap(mmr) ?? undefined;
   const _totalValue = useDataTap(totalValue) ?? undefined;
   const _unrealPnL = aggregated?.total_unreal_pnl ?? undefined;
+  const _totalMM = useDataTap(totalMM) ?? undefined;
+  const _currentLeverage = useDataTap(currentLeverage) ?? undefined;
 
 
   return {
@@ -136,8 +146,10 @@ export const useAssetViewScript = () => {
     isConnected,
     isMainAccount,
     hasSubAccount: !!state.subAccounts?.length,
-    currentLtv,
-    unrealPnL: _unrealPnL
+    currentLtv: _currentLtv,
+    unrealPnL: _unrealPnL,
+    totalMM: _totalMM,
+    currentLeverage: _currentLeverage,
   };
 };
 

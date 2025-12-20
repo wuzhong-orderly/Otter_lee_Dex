@@ -61,6 +61,8 @@ interface AssetValueListProps {
   isConnected: boolean;
   currentLtv?: string | number;
   unrealPnL?: string | number;
+  totalMM?: string | number;
+  currentLeverage?: string | number;
 }
 
 const calculateTextColor = (val: number): string => {
@@ -274,6 +276,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
     isConnected,
     currentLtv,
     unrealPnL,
+    currentLeverage,
   } = props;
 
   const [optionsOpen, setOptionsOpen] = useLocalStorage(
@@ -378,17 +381,16 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           // description={t("trading.asset.maintenanceMarginRatio.tooltip")}
           // formula={t("trading.asset.maintenanceMarginRatio.formula")}
           visible={visible}
-          value={renderMMR}
-          rule="percentages"
-          showPercentage={true}
-          placeholder="--%"
+          value={currentLeverage}
+          placeholder="--"
+          unit="X"
         />
         <AssetDetail
           label={t("transfer.LTV.currentLTV")}
           // description={t("trading.asset.maintenanceMarginRatio.tooltip")}
           // formula={t("trading.asset.maintenanceMarginRatio.formula")}
           visible={visible}
-          value={renderMMR}
+          value={currentLtv}
           rule="percentages"
           showPercentage={true}
           placeholder="--%"
@@ -418,6 +420,8 @@ export const AssetView: FC<
   hasSubAccount,
   currentLtv,
   unrealPnL,
+  totalMM,
+  currentLeverage,
 }) => {
     const { title, description, titleColor, titleClsName } =
       useCurrentStatusText();
@@ -554,6 +558,8 @@ export const AssetView: FC<
                 isConnected={isConnected}
                 currentLtv={currentLtv}
                 unrealPnL={unrealPnL}
+                totalMM={totalMM}
+                currentLeverage={currentLeverage}
               />
             </Box>
           )}
