@@ -117,6 +117,8 @@ export const useAssetViewScript = () => {
   const _marginRatioVal = useDataTap(marginRatioVal) ?? undefined;
   const _mmr = useDataTap(mmr) ?? undefined;
   const _totalValue = useDataTap(totalValue) ?? undefined;
+  const _unrealPnL = aggregated?.total_unreal_pnl ?? undefined;
+
 
   return {
     onDeposit,
@@ -135,6 +137,7 @@ export const useAssetViewScript = () => {
     isMainAccount,
     hasSubAccount: !!state.subAccounts?.length,
     currentLtv,
+    unrealPnL: _unrealPnL
   };
 };
 

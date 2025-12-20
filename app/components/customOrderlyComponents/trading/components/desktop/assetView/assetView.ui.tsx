@@ -60,6 +60,7 @@ interface AssetValueListProps {
   renderMMR?: string | number;
   isConnected: boolean;
   currentLtv?: string | number;
+  unrealPnL?: string | number;
 }
 
 const calculateTextColor = (val: number): string => {
@@ -272,6 +273,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
     renderMMR,
     isConnected,
     currentLtv,
+    unrealPnL,
   } = props;
 
   const [optionsOpen, setOptionsOpen] = useLocalStorage(
@@ -324,15 +326,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
             : "oui-max-h-0",
         )}
       >
-        <AssetDetail
-          label={t("trading.asset.freeCollateral")}
-          description={t("trading.asset.freeCollateral.tooltip")}
-          formula={t("trading.asset.freeCollateral.formula")}
-          visible={visible}
-          // TODO: change AssetDetail value
-          value={freeCollateral! === 0 ? ("0" as any) : freeCollateral}
-          unit="USDC"
-        />
+
         <AssetDetail
           label={t("trading.asset.marginRatio")}
           description={t("trading.asset.marginRatio.tooltip")}
@@ -345,14 +339,29 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           placeholder="--%"
         />
         <AssetDetail
-          label={t("trading.asset.maintenanceMarginRatio")}
+          label={t("trading.asset.freeCollateral")}
+          description={t("trading.asset.freeCollateral.tooltip")}
+          formula={t("trading.asset.freeCollateral.formula")}
+          visible={visible}
+          // TODO: change AssetDetail value
+          value={freeCollateral! === 0 ? ("0" as any) : freeCollateral}
+          unit="USDC"
+        />
+        <AssetDetail
+          label={t("common.unrealizedPnl")}
+          description={t("positions.column.unrealPnl.tooltip")}
+          visible={visible}
+          // TODO: change AssetDetail value
+          value={unrealPnL! === 0 ? ("0" as any) : unrealPnL}
+          unit="USDC"
+        />
+        <AssetDetail
+          label="Maintainence Margin"
           description={t("trading.asset.maintenanceMarginRatio.tooltip")}
           formula={t("trading.asset.maintenanceMarginRatio.formula")}
           visible={visible}
-          value={renderMMR}
-          rule="percentages"
-          showPercentage={true}
-          placeholder="--%"
+          value={freeCollateral! === 0 ? ("0" as any) : freeCollateral}
+          unit="USDC"
         />
         <AssetDetail
           label={t("trading.asset.maintenanceMarginRatio")}
@@ -365,9 +374,9 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           placeholder="--%"
         />
         <AssetDetail
-          label={t("trading.asset.maintenanceMarginRatio")}
-          description={t("trading.asset.maintenanceMarginRatio.tooltip")}
-          formula={t("trading.asset.maintenanceMarginRatio.formula")}
+          label={t("leverage.currentLeverage")}
+          // description={t("trading.asset.maintenanceMarginRatio.tooltip")}
+          // formula={t("trading.asset.maintenanceMarginRatio.formula")}
           visible={visible}
           value={renderMMR}
           rule="percentages"
@@ -375,29 +384,9 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           placeholder="--%"
         />
         <AssetDetail
-          label={t("trading.asset.maintenanceMarginRatio")}
-          description={t("trading.asset.maintenanceMarginRatio.tooltip")}
-          formula={t("trading.asset.maintenanceMarginRatio.formula")}
-          visible={visible}
-          value={renderMMR}
-          rule="percentages"
-          showPercentage={true}
-          placeholder="--%"
-        />
-        <AssetDetail
-          label={t("trading.asset.maintenanceMarginRatio")}
-          description={t("trading.asset.maintenanceMarginRatio.tooltip")}
-          formula={t("trading.asset.maintenanceMarginRatio.formula")}
-          visible={visible}
-          value={renderMMR}
-          rule="percentages"
-          showPercentage={true}
-          placeholder="--%"
-        />
-        <AssetDetail
-          label={t("trading.asset.maintenanceMarginRatio")}
-          description={t("trading.asset.maintenanceMarginRatio.tooltip")}
-          formula={t("trading.asset.maintenanceMarginRatio.formula")}
+          label={t("transfer.LTV.currentLTV")}
+          // description={t("trading.asset.maintenanceMarginRatio.tooltip")}
+          // formula={t("trading.asset.maintenanceMarginRatio.formula")}
           visible={visible}
           value={renderMMR}
           rule="percentages"
@@ -428,6 +417,7 @@ export const AssetView: FC<
   isMainAccount,
   hasSubAccount,
   currentLtv,
+  unrealPnL,
 }) => {
     const { title, description, titleColor, titleClsName } =
       useCurrentStatusText();
@@ -563,6 +553,7 @@ export const AssetView: FC<
                 renderMMR={renderMMR}
                 isConnected={isConnected}
                 currentLtv={currentLtv}
+                unrealPnL={unrealPnL}
               />
             </Box>
           )}
