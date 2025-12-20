@@ -276,7 +276,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
 
   const [optionsOpen, setOptionsOpen] = useLocalStorage(
     "orderly_entry_asset_list_open",
-    false,
+    true,
   );
   const [open, setOpen] = useState<boolean>(optionsOpen);
 
@@ -319,7 +319,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           "group-hover:oui-will-change-[max-height]",
           open
             ? showLTV
-              ? "oui-max-h-[94px]"
+              ? "oui-max-h-[200px]"
               : "oui-max-h-[200px]"
             : "oui-max-h-0",
         )}
