@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { useTranslation } from "@orderly.network/i18n";
 import {
   Card,
@@ -12,6 +12,8 @@ import {
   gradientTextVariants,
   EditIcon,
   EyeCloseIcon,
+  Tooltip,
+  cn,
 } from "@orderly.network/ui";
 import { AuthGuard } from "@orderly.network/ui-connector";
 import { AssetScriptReturn } from "./assets.script";
@@ -23,7 +25,7 @@ export const AssetsUI: React.FC<
   const { t } = useTranslation();
   return (
     <Card
-      classNames={{ footer: "oui-h-[48px]", root: "oui-h-[240px]" }}
+      classNames={{ footer: "oui-h-[48px]", root: "oui-h-auto oui-min-h-[240px]" }}
       title={
         <AssetsHeader
           disabled={!props.canTrade}
@@ -80,6 +82,12 @@ export const AssetsUI: React.FC<
             currentLeverage={props.currentLeverage}
             onLeverageEdit={props.onLeverageEdit}
             visible={props.visible}
+            perpTradingVolume={props.perpTradingVolume}
+            dailyVolume={props.dailyVolume}
+            totalProfit={props.totalProfit}
+            maxDrawdown={props.maxDrawdown}
+            totalDeposit={props.totalDeposit}
+            totalWithdrawal={props.totalWithdrawal}
           />
         </AuthGuard>
       </>
@@ -106,45 +114,162 @@ type AssetStatisticProps = Pick<
   | "freeCollateral"
   | "onLeverageEdit"
   | "visible"
+  | "perpTradingVolume"
+  | "dailyVolume"
+  | "totalProfit"
+  | "maxDrawdown"
+  | "totalDeposit"
+  | "totalWithdrawal"
 >;
 
 export const AssetStatistic = (props: AssetStatisticProps) => {
   const { t } = useTranslation();
 
   return (
-    <Grid cols={2} className="oui-h-12">
-      <Statistic label={t("common.unrealizedPnl")}>
-        <Flex>
-          <Text.pnl
-            coloring
-            size="lg"
-            weight="semibold"
-            visible={props.visible}
-          >
-            {props.unrealPnL}
-          </Text.pnl>
-          <Text.roi
-            coloring
-            rule="percentages"
-            size="sm"
-            weight="semibold"
-            prefix={"("}
-            suffix={")"}
-            visible={props.visible}
-          >
-            {props.unrealROI}
-          </Text.roi>
-        </Flex>
-      </Statistic>
-      <Statistic
-        label={t("portfolio.overview.availableWithdraw")}
-        // @ts-ignore
-        align="right"
-        // @ts-ignore
-        valueProps={{ size: "lg", visible: props.visible }}
+    <div className="oui-space-y-4">
+      <Grid cols={2} className="oui-h-12">
+        <Statistic label={t("common.unrealizedPnl")}>
+          <Flex>
+            <Text.pnl
+              coloring
+              size="lg"
+              weight="semibold"
+              visible={props.visible}
+            >
+              {props.unrealPnL}
+            </Text.pnl>
+            <Text.roi
+              coloring
+              rule="percentages"
+              size="sm"
+              weight="semibold"
+              prefix={"("}
+              suffix={")"}
+              visible={props.visible}
+            >
+              {props.unrealROI}
+            </Text.roi>
+          </Flex>
+        </Statistic>
+        <Statistic
+          label={t("portfolio.overview.availableWithdraw")}
+          // @ts-ignore
+          align="right"
+          // @ts-ignore
+          valueProps={{ size: "lg", visible: props.visible }}
+        >
+          {props.freeCollateral}
+        </Statistic>
+      </Grid>
+      <div className="oui-space-y-2">
+        <AssetDetail
+          label="Perp Trading Volume"
+          value={props.perpTradingVolume}
+          visible={props.visible}
+        />
+        <AssetDetail
+          label="Today's volume"
+          value={props.dailyVolume}
+          visible={props.visible}
+        />
+        <AssetDetail
+          label="Total profit"
+          value={props.totalProfit}
+          visible={props.visible}
+        />
+        <AssetDetail
+          label="Max Drawdown"
+          value={props.maxDrawdown}
+          visible={props.visible}
+        />
+        <AssetDetail
+          label="Total deposit"
+          value={props.totalDeposit}
+          visible={props.visible}
+        />
+        <AssetDetail
+          label="Total withdrwal"
+          value={props.totalWithdrawal}
+          visible={props.visible}
+        />
+      </div>
+    </div>
+  );
+};
+
+interface TooltipContentProps {
+  description: ReactNode;
+  formula: ReactNode;
+}
+
+export const TooltipContent: FC<TooltipContentProps> = (props) => {
+  const { description, formula } = props;
+  return (
+    <div className="oui-min-w-[204px] oui-max-w-[240px] oui-text-2xs oui-leading-normal oui-text-base-contrast-80">
+      {typeof description !== "undefined" && description !== null && (
+        <span>{description}</span>
+      )}
+      <Divider className="oui-border-white/10" my={2} />
+      {typeof formula !== "undefined" && formula !== null && (
+        <span>{formula}</span>
+      )}
+    </div>
+  );
+};
+
+interface AssetDetailProps {
+  label: string;
+  description?: ReactNode;
+  formula?: ReactNode;
+  visible: boolean;
+  value?: number | string;
+  unit?: string;
+  rule?: "percentages";
+  isConnected?: boolean;
+  showPercentage?: boolean;
+  placeholder?: string;
+}
+
+const AssetDetail: FC<AssetDetailProps> = (props) => {
+  const {
+    label,
+    description,
+    formula,
+    visible,
+    value,
+    unit,
+    rule,
+    placeholder,
+  } = props;
+  return (
+    <Flex justify="between">
+      <Tooltip
+        className={""}
+        content={<TooltipContent description={description} formula={formula} />}
       >
-        {props.freeCollateral}
-      </Statistic>
-    </Grid>
+        <Text
+          size="2xs"
+          color="neutral"
+          weight="semibold"
+          className="oui-cursor-pointer oui-border-b oui-border-dashed oui-border-line-12"
+        >
+          {label}
+        </Text>
+      </Tooltip>
+      <Text.numeral
+        visible={visible}
+        size="2xs"
+        unit={unit}
+        unitClassName="oui-text-base-contrast-36 oui-ml-0.5"
+        as="div"
+        rule={rule}
+        padding={false}
+        dp={2}
+        // suffix={value && unit}
+        placeholder={placeholder}
+      >
+        {value || "--"}
+      </Text.numeral>
+    </Flex>
   );
 };

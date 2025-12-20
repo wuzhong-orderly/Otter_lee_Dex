@@ -79,6 +79,12 @@ export const useAssetScript = () => {
     namespace,
     isMainAccount,
     hasSubAccount: subAccounts?.length > 0,
+    perpTradingVolume: 123,
+    dailyVolume: 123,
+    totalProfit: 123,
+    maxDrawdown: 123,
+    totalDeposit: 123,
+    totalWithdrawal: 123,
   } as const;
 };
 
