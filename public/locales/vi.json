@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Tỷ lệ dương",
   "markets.symbolInfoBar.Mark": "Đánh dấu",
   "markets.symbolInfoBar.Mark.tooltip": "Giá để tính toán PnL chưa thực hiện và thanh lý.",
-  "markets.symbolInfoBar.Index": "Chỉ số",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Trung bình của các giá cuối cùng trên các sàn giao dịch khác.",
   "markets.symbolInfoBar.24hVolume": "Khối lượng 24h",
   "markets.symbolInfoBar.24hVolume.tooltip": "Tổng khối lượng giao dịch 24 giờ trên Mạng Orderly.",

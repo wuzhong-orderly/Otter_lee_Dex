@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Положительная ставка",
   "markets.symbolInfoBar.Mark": "Марка",
   "markets.symbolInfoBar.Mark.tooltip": "Цена для расчета нереализованного PnL и ликвидации.",
-  "markets.symbolInfoBar.Index": "Индекс",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Среднее значение последних цен на других биржах.",
   "markets.symbolInfoBar.24hVolume": "Объем за 24ч",
   "markets.symbolInfoBar.24hVolume.tooltip": "Общий объем торгов за 24 часа в сети Orderly.",

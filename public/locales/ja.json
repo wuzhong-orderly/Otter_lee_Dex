@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "ポジティブレート",
   "markets.symbolInfoBar.Mark": "マーク",
   "markets.symbolInfoBar.Mark.tooltip": "未実現損益と清算の計算に使用される価格。",
-  "markets.symbolInfoBar.Index": "インデックス",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "他の取引所の最終価格の平均。",
   "markets.symbolInfoBar.24hVolume": "24時間のボリューム",
   "markets.symbolInfoBar.24hVolume.tooltip": "Orderly Networkでの24時間の総取引量。",

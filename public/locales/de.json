@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Positive Rate",
   "markets.symbolInfoBar.Mark": "Mark",
   "markets.symbolInfoBar.Mark.tooltip": "Preis für die Berechnung des nicht realisierten PnL und der Liquidation.",
-  "markets.symbolInfoBar.Index": "Index",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Durchschnitt der letzten Preise über andere Börsen.",
   "markets.symbolInfoBar.24hVolume": "24h Volumen",
   "markets.symbolInfoBar.24hVolume.tooltip": "24-Stunden-Gesamtvolumen auf dem Orderly Network.",

@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Pozitif oran",
   "markets.symbolInfoBar.Mark": "İşaret",
   "markets.symbolInfoBar.Mark.tooltip": "Gerçekleşmemiş K/Z ve likidasyon hesaplaması için fiyat.",
-  "markets.symbolInfoBar.Index": "Endeks",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Diğer borsalardaki son fiyatların ortalaması.",
   "markets.symbolInfoBar.24hVolume": "24s hacim",
   "markets.symbolInfoBar.24hVolume.tooltip": "Orderly Network'te 24 saatlik toplam işlem hacmi.",

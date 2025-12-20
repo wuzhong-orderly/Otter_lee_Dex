@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Tasa positiva",
   "markets.symbolInfoBar.Mark": "Marca",
   "markets.symbolInfoBar.Mark.tooltip": "Precio para el cálculo de PnL no realizado y liquidación.",
-  "markets.symbolInfoBar.Index": "Índice",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Promedio de los últimos precios en otros exchanges.",
   "markets.symbolInfoBar.24hVolume": "Volumen 24h",
   "markets.symbolInfoBar.24hVolume.tooltip": "Volumen total de trading de 24 horas en la Red Orderly.",

@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Tingkat positif",
   "markets.symbolInfoBar.Mark": "Mark",
   "markets.symbolInfoBar.Mark.tooltip": "Harga untuk perhitungan PnL belum direalisasi dan likuidasi.",
-  "markets.symbolInfoBar.Index": "Indeks",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Rata-rata dari harga terakhir di bursa lain.",
   "markets.symbolInfoBar.24hVolume": "Volume 24h",
   "markets.symbolInfoBar.24hVolume.tooltip": "Total volume trading 24 jam di Orderly Network.",

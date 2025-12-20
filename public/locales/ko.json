@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "긍정 비율",
   "markets.symbolInfoBar.Mark": "마크",
   "markets.symbolInfoBar.Mark.tooltip": "미실현 손익 및 청산 계산을 위한 가격.",
-  "markets.symbolInfoBar.Index": "인덱스",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "다른 거래소에서의 마지막 가격의 평균.",
   "markets.symbolInfoBar.24hVolume": "24시간 거래량",
   "markets.symbolInfoBar.24hVolume.tooltip": "Orderly Network에서의 24시간 총 거래량.",

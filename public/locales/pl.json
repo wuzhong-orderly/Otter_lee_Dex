@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Wskaźnik dodatni",
   "markets.symbolInfoBar.Mark": "Mark",
   "markets.symbolInfoBar.Mark.tooltip": "Cena do obliczania niezrealizowanego PnL i likwidacji.",
-  "markets.symbolInfoBar.Index": "Indeks",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Średnia ostatnich cen na innych giełdach.",
   "markets.symbolInfoBar.24hVolume": "Wolumen 24h",
   "markets.symbolInfoBar.24hVolume.tooltip": "24-godzinny całkowity wolumen handlu w sieci Orderly.",

@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Tasso positivo",
   "markets.symbolInfoBar.Mark": "Mark",
   "markets.symbolInfoBar.Mark.tooltip": "Prezzo per il calcolo del P/L non realizzato e della liquidazione.",
-  "markets.symbolInfoBar.Index": "Indice",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Media degli ultimi prezzi su altri exchange.",
   "markets.symbolInfoBar.24hVolume": "Volume 24h",
   "markets.symbolInfoBar.24hVolume.tooltip": "Volume totale di trading nelle ultime 24 ore su Orderly Network.",

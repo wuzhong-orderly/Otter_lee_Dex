@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "正利率",
   "markets.symbolInfoBar.Mark": "标记",
   "markets.symbolInfoBar.Mark.tooltip": "用于计算未实现盈亏和清算的价格。",
-  "markets.symbolInfoBar.Index": "指数",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "其他交易所最新价格的平均值。",
   "markets.symbolInfoBar.24hVolume": "24小时成交量",
   "markets.symbolInfoBar.24hVolume.tooltip": "Orderly Network上的24小时总交易量。",

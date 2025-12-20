@@ -140,7 +140,7 @@
   "markets.funding.column.positiveRate": "Positief percentage",
   "markets.symbolInfoBar.Mark": "Mark",
   "markets.symbolInfoBar.Mark.tooltip": "Prijs voor de berekening van ongerealiseerde W/V en liquidatie.",
-  "markets.symbolInfoBar.Index": "Index",
+  "markets.symbolInfoBar.Index": "Oracle",
   "markets.symbolInfoBar.Index.tooltip": "Gemiddelde van de laatste prijzen op andere beurzen.",
   "markets.symbolInfoBar.24hVolume": "24u volume",
   "markets.symbolInfoBar.24hVolume.tooltip": "24 uur totaal handelsvolume op het Orderly Network.",
