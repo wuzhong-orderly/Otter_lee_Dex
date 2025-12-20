@@ -6,6 +6,10 @@ import {
   useLocalStorage,
   usePositionStream,
   useWalletConnector,
+  usePrivateQuery,
+  useDaily,
+  useAssetsHistory,
+  useIndexPricesStream
 } from "@orderly.network/hooks";
 import { useAppContext } from "@orderly.network/react-app";
 import { AccountStatusEnum } from "@orderly.network/types";
@@ -17,6 +21,8 @@ import {
   TransferDialogId,
   TransferSheetId,
 } from "@orderly.network/ui-transfer";
+import { API } from "@orderly.network/types";
+import { Decimal, zero } from "@orderly.network/utils";
 
 export const useAssetScript = () => {
   const { connect, namespace } = useWalletConnector();
@@ -61,6 +67,139 @@ export const useAssetScript = () => {
     }
   }, [isMobile]);
 
+  const { data: volumeStatistics } = usePrivateQuery<{
+    perp_volume_last_7_days: number;
+    perp_volume_last_30_days: number;
+    perp_volume_ltd: number; // All-time trading volume  
+  }>("/v1/volume/user/stats");
+
+  const { data: dailyVolume } = useDaily({
+    startDate: new Date(Date.now() - 24 * 60 * 60 * 1000), // Yesterday  
+    endDate: new Date(),   // Today    
+  });
+  const todayVolume = dailyVolume?.find(item => {
+    const today = new Date().toISOString().split('T')[0];
+    return item.date === today;
+  })?.perp_volume;
+
+  const { data: positionHistory } = usePrivateQuery<API.PositionHistory[]>(
+    "/v1/position_history?limit=1000",
+    {
+      formatter(data) {
+        return data.rows ?? [];
+      },
+    }
+  );
+
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  thirtyDaysAgo.setHours(0, 0, 0, 0); // Start of day  
+
+  const today = new Date();
+  today.setHours(23, 59, 59, 999); // End of day  
+
+  // Filter positions for last 30 days  
+  const positionsLast30Days = positionHistory?.filter(item => {
+    const time = item?.last_update_time ?? item.open_timestamp;
+    const positionDate = new Date(time);
+    return positionDate >= thirtyDaysAgo && positionDate <= today;
+  });
+
+  // Total profit from positions  
+  const totalProfit = positionsLast30Days?.reduce((sum, position) => {
+    const netPnL = position.realized_pnl -
+      position.accumulated_funding_fee -
+      position.trading_fee;
+    return sum + (netPnL || 0);
+  }, 0) || 0;
+
+
+  const positionWithLowestPnL = positionsLast30Days?.reduce((lowest, position) => {
+    // Calculate net PNL for current position  
+    const currentNetPnL = position.realized_pnl -
+      position.accumulated_funding_fee -
+      position.trading_fee;
+
+    // Calculate net PNL for current lowest position  
+    const lowestNetPnL = lowest.realized_pnl -
+      lowest.accumulated_funding_fee -
+      lowest.trading_fee;
+
+    // Return position with lower PNL (more negative)  
+    return currentNetPnL < lowestNetPnL ? position : lowest;
+  });
+
+  // Get the actual lowest PNL value  
+  const lowestPnLValue = positionWithLowestPnL ?
+    positionWithLowestPnL.realized_pnl -
+    positionWithLowestPnL.accumulated_funding_fee -
+    positionWithLowestPnL.trading_fee : 0;
+
+  const [allDepositHistory] = useAssetsHistory({
+    side: "DEPOSIT",
+    startTime: thirtyDaysAgo.getTime(),
+    endTime: today.getTime(),
+    pageSize: 200,
+  });
+
+
+  const [allWithdrawalHistory] = useAssetsHistory({
+    side: "WITHDRAW",
+    startTime: thirtyDaysAgo.getTime(),
+    endTime: today.getTime(),
+    pageSize: 200,
+  });
+
+
+  const { getIndexPrice } = useIndexPricesStream();
+  const convertToUSDCAndOperate = useCallback(
+    (inputs: {
+      token: string;
+      amount: string | number;
+      value: Decimal;
+      op?: "add" | "sub";
+    }): Decimal => {
+      const { token, amount, value, op = "sub" } = inputs;
+      if (token.toUpperCase() === "USDC") {
+        return op === "add" ? value.add(amount) : value.sub(amount);
+      } else {
+        const indexPrice = getIndexPrice(token);
+        if (indexPrice) {
+          const delta = new Decimal(amount).mul(indexPrice);
+          return op === "add" ? value.add(delta) : value.sub(delta);
+        }
+        return value;
+      }
+    },
+    [getIndexPrice],
+  );
+
+  const totalDeposits = allDepositHistory
+    ?.filter((item) => item.trans_status === "COMPLETED")
+    .reduce((acc, item) => {
+      return acc.add(
+        convertToUSDCAndOperate({
+          token: item.token,
+          amount: item.amount,
+          value: zero,
+          op: "add",
+        }),
+      );
+    }, zero);
+
+  const totalWithdrawals = allWithdrawalHistory
+    ?.filter((item) => item.trans_status === "COMPLETED")
+    .reduce((acc, item) => {
+      return acc.add(
+        convertToUSDCAndOperate({
+          token: item.token,
+          amount: item.amount,
+          value: zero,
+          op: "add",
+        }),
+      );
+    }, zero);
+
   return {
     canTrade,
     connect,
@@ -79,12 +218,12 @@ export const useAssetScript = () => {
     namespace,
     isMainAccount,
     hasSubAccount: subAccounts?.length > 0,
-    perpTradingVolume: 123,
-    dailyVolume: 123,
-    totalProfit: 123,
-    maxDrawdown: 123,
-    totalDeposit: 123,
-    totalWithdrawal: 123,
+    perpTradingVolume: (todayVolume ?? 0) + (volumeStatistics?.perp_volume_ltd ?? 0),
+    dailyVolume: todayVolume,
+    totalProfit: totalProfit,
+    maxDrawdown: lowestPnLValue,
+    totalDeposit: totalDeposits,
+    totalWithdrawal: totalWithdrawals,
   } as const;
 };
 

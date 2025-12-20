@@ -166,31 +166,37 @@ export const AssetStatistic = (props: AssetStatisticProps) => {
           label="Perp Trading Volume"
           value={props.perpTradingVolume}
           visible={props.visible}
+          unit="USDC"
         />
         <AssetDetail
           label="Today's volume"
           value={props.dailyVolume}
           visible={props.visible}
+          unit="USDC"
         />
         <AssetDetail
-          label="Total profit"
+          label="Total profit(30 days)"
           value={props.totalProfit}
           visible={props.visible}
+          unit="USDC"
         />
         <AssetDetail
-          label="Max Drawdown"
+          label="Max Drawdown(30 days)"
           value={props.maxDrawdown}
           visible={props.visible}
+          unit="USDC"
         />
         <AssetDetail
-          label="Total deposit"
+          label="Total deposit(30 days)"
           value={props.totalDeposit}
           visible={props.visible}
+          unit="USDC"
         />
         <AssetDetail
-          label="Total withdrwal"
+          label="Total withdrwal(30 days)"
           value={props.totalWithdrawal}
           visible={props.visible}
+          unit="USDC"
         />
       </div>
     </div>
