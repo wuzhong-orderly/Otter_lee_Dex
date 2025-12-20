@@ -174,7 +174,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
 
   const [sortableItems, setSortableItems] = useLocalStorage<string[]>(
     OrderEntrySortKeys,
-    ["margin", "assets", "orderEntry"],
+    ["orderEntry", "assets", "margin"],
   );
 
   const dropAnimationConfig = useMemo(() => {
@@ -279,9 +279,9 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
     return tradingViewFullScreen
       ? 0
       : symbolInfoBarHeight +
-          orderbookMaxHeight +
-          dataListInitialHeight +
-          space * 4;
+      orderbookMaxHeight +
+      dataListInitialHeight +
+      space * 4;
   }, [tradingViewFullScreen]);
 
   const minScreenHeightSM =
@@ -669,9 +669,9 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
                 style={{
                   minHeight: Math.max(
                     symbolInfoBarHeight +
-                      tradindviewMinHeight +
-                      orderbookMinHeight +
-                      space * 2,
+                    tradindviewMinHeight +
+                    orderbookMinHeight +
+                    space * 2,
                     props.orderEntryHeight,
                   ),
                   maxHeight:
@@ -834,11 +834,10 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
               id={activeId}
               showIndicator={showPositionIcon}
               dragOverlay
-              className={`${
-                orderInteractionWidgets[
-                  activeId as keyof typeof orderInteractionWidgets
-                ].className
-              } oui-shadow-lg oui-shadow-base-9`}
+              className={`${orderInteractionWidgets[
+                activeId as keyof typeof orderInteractionWidgets
+              ].className
+                } oui-shadow-lg oui-shadow-base-9`}
             >
               {
                 orderInteractionWidgets[
@@ -873,7 +872,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
             props.className,
             "oui-justify-start",
             tradingViewFullScreen &&
-              "oui-relative oui-h-[calc(100vh-80px)] oui-w-screen oui-overflow-hidden !oui-p-0",
+            "oui-relative oui-h-[calc(100vh-80px)] oui-w-screen oui-overflow-hidden !oui-p-0",
           )}
           width="100%"
           p={2}
@@ -910,22 +909,21 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
       <DragOverlay
         dropAnimation={dropAnimationConfig}
 
-        // style={{
-        //   transform: "scale(1.05)",
-        // }}
-        // transition="transform 200ms ease"
-        // className="oui-animate-pop"
+      // style={{
+      //   transform: "scale(1.05)",
+      // }}
+      // transition="transform 200ms ease"
+      // className="oui-animate-pop"
       >
         {activeId ? (
           <SortablePanel
             id={activeId}
             showIndicator={showPositionIcon}
             dragOverlay
-            className={`${
-              orderInteractionWidgets[
-                activeId as keyof typeof orderInteractionWidgets
-              ].className
-            } oui-shadow-lg oui-shadow-base-9`}
+            className={`${orderInteractionWidgets[
+              activeId as keyof typeof orderInteractionWidgets
+            ].className
+              } oui-shadow-lg oui-shadow-base-9`}
           >
             {
               orderInteractionWidgets[
