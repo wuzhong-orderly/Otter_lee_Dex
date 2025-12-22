@@ -96,8 +96,7 @@ export const useAssetScript = () => {
   thirtyDaysAgo.setHours(0, 0, 0, 0); // Start of day  
 
   const today = new Date();
-  today.setHours(23, 59, 59, 999); // End of day  
-
+  today.setHours(23, 59, 59, 999); // End of day
   // Filter positions for last 30 days  
   const positionsLast30Days = positionHistory?.filter(item => {
     const time = item?.last_update_time ?? item.open_timestamp;
@@ -114,7 +113,7 @@ export const useAssetScript = () => {
   }, 0) || 0;
 
 
-  const positionWithLowestPnL = positionsLast30Days?.reduce((lowest, position) => {
+  const positionWithLowestPnL = (positionsLast30Days && positionsLast30Days.length > 0) ? positionsLast30Days.reduce((lowest, position) => {
     // Calculate net PNL for current position  
     const currentNetPnL = position.realized_pnl -
       position.accumulated_funding_fee -
@@ -127,7 +126,7 @@ export const useAssetScript = () => {
 
     // Return position with lower PNL (more negative)  
     return currentNetPnL < lowestNetPnL ? position : lowest;
-  });
+  }) : undefined;
 
   // Get the actual lowest PNL value  
   const lowestPnLValue = positionWithLowestPnL ?
