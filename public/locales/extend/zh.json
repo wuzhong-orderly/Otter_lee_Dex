@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "在 Orderly 交易即可赚取 ORDER",
-  "extend.affiliate.tag": "40% 返佣",
-  "extend.affiliate.description": "成为 Orderly 合作伙伴，赚取更多收益",
-  "extend.staking": "质押",
-  "extend.staking.description": "质押 ORDER/esORDER 以获取 VALOR",
-  "extend.swap": "兑换"
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
+  "extend.affiliate.tag": "40% Rebate",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
+  "extend.staking": "Staking",
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "维持保证金",
+  "extend.common.MM.description": "保持完整仓位开放所需的最低投资组合价值",
+  "extend.common.MM.tooltip": "保持完整仓位开放所需的最低投资组合价值",
+  "extend.common.MM.formula": "总MM = Σ (仓位名义价值 × MMR)",
+  "extend.common.leverage.tooltip": "当前杠杆 = 总名义价值 / 总账户价值",
+  "extend.portfolio.volume.ltd": "永续合约交易量",
+  "extend.portfolio.volume.today": "今日交易量",
+  "extend.portfolio.profit.30d": "总利润（30天）",
+  "extend.portfolio.maxdrawdown": "最大回撤（30天）",
+  "extend.portfolio.total.deposit": "总存款（30天）",
+  "extend.portfolio.total.withdraw": "总提款（30天）"
 }

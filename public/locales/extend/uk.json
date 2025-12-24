@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Торгуйте з Orderly, щоб заробити ORDER",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
   "extend.affiliate.tag": "40% Rebate",
-  "extend.affiliate.description": "Заробляйте більше як партнер Orderly",
-  "extend.staking": "Стейкінг",
-  "extend.staking.description": "Ставте ORDER/esORDER, щоб отримати VALOR",
-  "extend.swap": "Обмін"
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
+  "extend.staking": "Staking",
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Підтримуюча маржа",
+  "extend.common.MM.description": "Мінімальна вартість портфеля, необхідна для підтримки повної позиції відкритою",
+  "extend.common.MM.tooltip": "Мінімальна вартість портфеля, необхідна для підтримки повної позиції відкритою",
+  "extend.common.MM.formula": "Загальна MM = Σ (Номінальна вартість позиції × MMR)",
+  "extend.common.leverage.tooltip": "Поточне кредитне плече = Загальна номінальна вартість / Загальна вартість рахунку",
+  "extend.portfolio.volume.ltd": "Обсяг торгівлі perp",
+  "extend.portfolio.volume.today": "Сьогоднішній обсяг",
+  "extend.portfolio.profit.30d": "Загальний прибуток (30 днів)",
+  "extend.portfolio.maxdrawdown": "Максимальна просадка (30 днів)",
+  "extend.portfolio.total.deposit": "Загальний депозит (30 днів)",
+  "extend.portfolio.total.withdraw": "Загальне зняття (30 днів)"
 }

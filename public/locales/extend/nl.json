@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Handel met Orderly om ORDER te verdienen",
-  "extend.affiliate.tag": "40% Korting",
-  "extend.affiliate.description": "Verdien meer als een Orderly affiliate",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
+  "extend.affiliate.tag": "40% Rebate",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
   "extend.staking": "Staking",
-  "extend.staking.description": "ORDER/esORDER inzetten om VALOR te verwerven",
-  "extend.swap": "Ruilen"
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Onderhoudsmarge",
+  "extend.common.MM.description": "Minimale portefeuillewaarde vereist om de volledige positie open te houden",
+  "extend.common.MM.tooltip": "Minimale portefeuillewaarde vereist om de volledige positie open te houden",
+  "extend.common.MM.formula": "Totale MM = Σ (Positie Notional × MMR)",
+  "extend.common.leverage.tooltip": "Huidige hefboom = Totale notionele waarde / Totale accountwaarde",
+  "extend.portfolio.volume.ltd": "Perp handelsvolume",
+  "extend.portfolio.volume.today": "Volume van vandaag",
+  "extend.portfolio.profit.30d": "Totale winst (30 dagen)",
+  "extend.portfolio.maxdrawdown": "Maximale verlies (30 dagen)",
+  "extend.portfolio.total.deposit": "Totale storting (30 dagen)",
+  "extend.portfolio.total.withdraw": "Totale opname (30 dagen)"
 }

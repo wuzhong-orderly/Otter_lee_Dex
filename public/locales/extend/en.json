@@ -4,5 +4,16 @@
   "extend.affiliate.description": "Earn more as a Orderly affiliate",
   "extend.staking": "Staking",
   "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
-  "extend.swap": "Swap"
+  "extend.swap": "Swap",
+  "extend.common.MM": "Maintenance Margin",
+  "extend.common.MM.description": "Minimum portfolio value required to keep the full position open",
+  "extend.common.MM.tooltip": "Minimum portfolio value required to keep the full position open",
+  "extend.common.MM.formula": "Total MM = Σ (Position Notional × MMR)",
+  "extend.common.leverage.tooltip": "Current leverage = Total Notional Value / Total Account Value",
+  "extend.portfolio.volume.ltd": "Perp trading volume",
+  "extend.portfolio.volume.today": "Today's volume",
+  "extend.portfolio.profit.30d": "Total profit(30 days)",
+  "extend.portfolio.maxdrawdown": "Max drawdown(30 days)",
+  "extend.portfolio.total.deposit": "Total deposit(30 days)",
+  "extend.portfolio.total.withdraw": "Total withdraw(30 days)"
 }

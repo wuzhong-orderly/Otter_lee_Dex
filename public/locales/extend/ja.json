@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Orderlyで取引してORDERを獲得",
-  "extend.affiliate.tag": "40%リベート",
-  "extend.affiliate.description": "Orderlyアフィリエイトでより多くを獲得",
-  "extend.staking": "ステーキング",
-  "extend.staking.description": "ORDER/esORDERをステーキングしてVALORを獲得",
-  "extend.swap": "スワップ"
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
+  "extend.affiliate.tag": "40% Rebate",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
+  "extend.staking": "Staking",
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "維持証拠金",
+  "extend.common.MM.description": "ポジション全体を維持するために必要な最小ポートフォリオ価値",
+  "extend.common.MM.tooltip": "ポジション全体を維持するために必要な最小ポートフォリオ価値",
+  "extend.common.MM.formula": "合計MM = Σ (ポジション想定元本 × MMR)",
+  "extend.common.leverage.tooltip": "現在のレバレッジ = 合計想定元本価値 / 合計口座価値",
+  "extend.portfolio.volume.ltd": "Perp取引高",
+  "extend.portfolio.volume.today": "本日の取引高",
+  "extend.portfolio.profit.30d": "合計利益（30日間）",
+  "extend.portfolio.maxdrawdown": "最大ドローダウン（30日間）",
+  "extend.portfolio.total.deposit": "合計入金（30日間）",
+  "extend.portfolio.total.withdraw": "合計出金（30日間）"
 }

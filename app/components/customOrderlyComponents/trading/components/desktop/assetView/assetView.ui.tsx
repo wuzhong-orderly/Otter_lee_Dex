@@ -359,9 +359,9 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           unit="USDC"
         />
         <AssetDetail
-          label="Maintainence Margin"
-          description={t("trading.asset.maintenanceMarginRatio.tooltip")}
-          formula={t("trading.asset.maintenanceMarginRatio.formula")}
+          label={t("extend.common.MM")}
+          description={t("extend.common.MM.tooltip")}
+          formula={t("extend.common.MM.formula")}
           visible={visible}
           value={freeCollateral! === 0 ? ("0" as any) : freeCollateral}
           unit="USDC"
@@ -378,8 +378,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
         />
         <AssetDetail
           label={t("leverage.currentLeverage")}
-          // description={t("trading.asset.maintenanceMarginRatio.tooltip")}
-          // formula={t("trading.asset.maintenanceMarginRatio.formula")}
+          description={t("extend.common.leverage.tooltip")}
           visible={visible}
           value={currentLeverage}
           placeholder="--"

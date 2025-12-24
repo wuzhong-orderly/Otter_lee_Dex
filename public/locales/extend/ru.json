@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Торгуйте с Orderly, чтобы заработать ORDER",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
   "extend.affiliate.tag": "40% Rebate",
-  "extend.affiliate.description": "Зарабатывайте больше как партнер Orderly",
-  "extend.staking": "Ставки",
-  "extend.staking.description": "Ставка ORDER/esORDER для приобретения VALOR",
-  "extend.swap": "Обмен"
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
+  "extend.staking": "Staking",
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Поддерживающая маржа",
+  "extend.common.MM.description": "Минимальная стоимость портфеля, необходимая для поддержания полной позиции открытой",
+  "extend.common.MM.tooltip": "Минимальная стоимость портфеля, необходимая для поддержания полной позиции открытой",
+  "extend.common.MM.formula": "Общая MM = Σ (Номинальная стоимость позиции × MMR)",
+  "extend.common.leverage.tooltip": "Текущее кредитное плечо = Общая номинальная стоимость / Общая стоимость счета",
+  "extend.portfolio.volume.ltd": "Объем торговли perp",
+  "extend.portfolio.volume.today": "Сегодняшний объем",
+  "extend.portfolio.profit.30d": "Общая прибыль (30 дней)",
+  "extend.portfolio.maxdrawdown": "Максимальная просадка (30 дней)",
+  "extend.portfolio.total.deposit": "Общий депозит (30 дней)",
+  "extend.portfolio.total.withdraw": "Общее снятие (30 дней)"
 }

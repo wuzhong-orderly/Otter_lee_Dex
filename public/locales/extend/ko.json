@@ -1,10 +1,19 @@
 {
-  "extend.products.swap": "스왑",
-  "extend.products.trade": "거래",
-  "extend.tradingRewards.description": "Orderly에서 거래하여 ORDER 획득",
-  "extend.affiliate.tag": "40% 리베이트",
-  "extend.affiliate.description": "Orderly 제휴 프로그램으로 더 많은 수익 창출",
-  "extend.staking": "스테이킹",
-  "extend.staking.description": "ORDER/esORDER 스테이킹으로 VALOR 획득",
-  "extend.swap": "스왑"
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
+  "extend.affiliate.tag": "40% Rebate",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
+  "extend.staking": "Staking",
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "유지 증거금",
+  "extend.common.MM.description": "전체 포지션을 유지하는 데 필요한 최소 포트폴리오 가치",
+  "extend.common.MM.tooltip": "전체 포지션을 유지하는 데 필요한 최소 포트폴리오 가치",
+  "extend.common.MM.formula": "총 MM = Σ (포지션 명목 가치 × MMR)",
+  "extend.common.leverage.tooltip": "현재 레버리지 = 총 명목 가치 / 총 계정 가치",
+  "extend.portfolio.volume.ltd": "Perp 거래량",
+  "extend.portfolio.volume.today": "오늘의 거래량",
+  "extend.portfolio.profit.30d": "총 수익 (30일)",
+  "extend.portfolio.maxdrawdown": "최대 하락폭 (30일)",
+  "extend.portfolio.total.deposit": "총 입금 (30일)",
+  "extend.portfolio.total.withdraw": "총 출금 (30일)"
 }

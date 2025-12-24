@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Giao dịch với Orderly để kiếm ORDER",
-  "extend.affiliate.tag": "Hoàn trả 40%",
-  "extend.affiliate.description": "Kiếm thêm với tư cách là đối tác của Orderly",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
+  "extend.affiliate.tag": "40% Rebate",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
   "extend.staking": "Staking",
-  "extend.staking.description": "Staking ORDER/esORDER để nhận VALOR",
-  "extend.swap": "Hoán đổi"
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Ký quỹ duy trì",
+  "extend.common.MM.description": "Giá trị danh mục tối thiểu cần thiết để giữ toàn bộ vị thế mở",
+  "extend.common.MM.tooltip": "Giá trị danh mục tối thiểu cần thiết để giữ toàn bộ vị thế mở",
+  "extend.common.MM.formula": "Tổng MM = Σ (Giá trị danh nghĩa vị thế × MMR)",
+  "extend.common.leverage.tooltip": "Đòn bẩy hiện tại = Tổng giá trị danh nghĩa / Tổng giá trị tài khoản",
+  "extend.portfolio.volume.ltd": "Khối lượng giao dịch perp",
+  "extend.portfolio.volume.today": "Khối lượng hôm nay",
+  "extend.portfolio.profit.30d": "Tổng lợi nhuận (30 ngày)",
+  "extend.portfolio.maxdrawdown": "Mức giảm tối đa (30 ngày)",
+  "extend.portfolio.total.deposit": "Tổng nạp (30 ngày)",
+  "extend.portfolio.total.withdraw": "Tổng rút (30 ngày)"
 }

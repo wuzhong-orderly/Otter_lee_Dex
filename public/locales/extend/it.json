@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Fai trading con Orderly per guadagnare ORDER",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
   "extend.affiliate.tag": "40% Rebate",
-  "extend.affiliate.description": "Guadagna di più come affiliato Orderly",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
   "extend.staking": "Staking",
-  "extend.staking.description": "Stake ORDER/esORDER per acquisire VALOR",
-  "extend.swap": "Scambio"
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Margine di mantenimento",
+  "extend.common.MM.description": "Valore minimo del portafoglio richiesto per mantenere la posizione completa aperta",
+  "extend.common.MM.tooltip": "Valore minimo del portafoglio richiesto per mantenere la posizione completa aperta",
+  "extend.common.MM.formula": "MM totale = Σ (Nozionale posizione × MMR)",
+  "extend.common.leverage.tooltip": "Leva corrente = Valore nozionale totale / Valore totale del conto",
+  "extend.portfolio.volume.ltd": "Volume di trading perp",
+  "extend.portfolio.volume.today": "Volume di oggi",
+  "extend.portfolio.profit.30d": "Profitto totale (30 giorni)",
+  "extend.portfolio.maxdrawdown": "Drawdown massimo (30 giorni)",
+  "extend.portfolio.total.deposit": "Deposito totale (30 giorni)",
+  "extend.portfolio.total.withdraw": "Prelievo totale (30 giorni)"
 }

@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "ORDER kazanmak için Orderly ile ticaret yapın",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
   "extend.affiliate.tag": "40% Rebate",
-  "extend.affiliate.description": "Bir Orderly satış ortağı olarak daha fazla kazanın",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
   "extend.staking": "Staking",
-  "extend.staking.description": "VALOR kazanmak için ORDER/esORDER yatırın",
-  "extend.swap": "Takas"
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Bakım marjı",
+  "extend.common.MM.description": "Tam pozisyonu açık tutmak için gereken minimum portföy değeri",
+  "extend.common.MM.tooltip": "Tam pozisyonu açık tutmak için gereken minimum portföy değeri",
+  "extend.common.MM.formula": "Toplam MM = Σ (Pozisyon Nominal Değeri × MMR)",
+  "extend.common.leverage.tooltip": "Mevcut kaldıraç = Toplam nominal değer / Toplam hesap değeri",
+  "extend.portfolio.volume.ltd": "Perp işlem hacmi",
+  "extend.portfolio.volume.today": "Bugünün hacmi",
+  "extend.portfolio.profit.30d": "Toplam kâr (30 gün)",
+  "extend.portfolio.maxdrawdown": "Maksimum düşüş (30 gün)",
+  "extend.portfolio.total.deposit": "Toplam yatırım (30 gün)",
+  "extend.portfolio.total.withdraw": "Toplam çekim (30 gün)"
 }

@@ -1,8 +1,19 @@
 {
-  "extend.tradingRewards.description": "Berdagang dengan Tertib untuk mendapatkan ORDER",
-  "extend.affiliate.tag": "Rabat 40%",
-  "extend.affiliate.description": "Hasilkan lebih banyak sebagai afiliasi Tertib",
+  "extend.tradingRewards.description": "Trade with Orderly to earn ORDER",
+  "extend.affiliate.tag": "40% Rebate",
+  "extend.affiliate.description": "Earn more as a Orderly affiliate",
   "extend.staking": "Staking",
-  "extend.staking.description": "Staking ORDER/esORDER untuk mendapatkan VALOR",
-  "extend.swap": "Tukar"
+  "extend.staking.description": "Stake ORDER/esORDER to acquire VALOR",
+  "extend.swap": "Swap",
+  "extend.common.MM": "Margin Pemeliharaan",
+  "extend.common.MM.description": "Nilai portofolio minimum yang diperlukan untuk menjaga posisi penuh tetap terbuka",
+  "extend.common.MM.tooltip": "Nilai portofolio minimum yang diperlukan untuk menjaga posisi penuh tetap terbuka",
+  "extend.common.MM.formula": "Total MM = Σ (Notional Posisi × MMR)",
+  "extend.common.leverage.tooltip": "Leverage saat ini = Total Nilai Notional / Total Nilai Akun",
+  "extend.portfolio.volume.ltd": "Volume trading perp",
+  "extend.portfolio.volume.today": "Volume hari ini",
+  "extend.portfolio.profit.30d": "Total keuntungan (30 hari)",
+  "extend.portfolio.maxdrawdown": "Penurunan maksimal (30 hari)",
+  "extend.portfolio.total.deposit": "Total deposit (30 hari)",
+  "extend.portfolio.total.withdraw": "Total penarikan (30 hari)"
 }
