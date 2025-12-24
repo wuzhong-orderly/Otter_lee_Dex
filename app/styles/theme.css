@@ -101,6 +101,12 @@
   --oui-spacing-md: 26.25rem;
   --oui-spacing-lg: 30rem;
   --oui-spacing-xl: 33.75rem;
+
+
+}
+
+.oui-scaffold-footer-powered-by {
+  display: none;
 }
 
 html,
