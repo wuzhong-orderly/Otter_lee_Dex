@@ -163,37 +163,37 @@ export const AssetStatistic = (props: AssetStatisticProps) => {
       </Grid>
       <div className="oui-space-y-2">
         <AssetDetail
-          label="Perp Trading Volume"
+          label={t("extend.portfolio.volume.ltd")}
           value={props.perpTradingVolume}
           visible={props.visible}
           unit="USDC"
         />
         <AssetDetail
-          label="Today's volume"
+          label={t("extend.portfolio.volume.today")}
           value={props.dailyVolume}
           visible={props.visible}
           unit="USDC"
         />
         <AssetDetail
-          label="Total profit(30 days)"
+          label={t("extend.portfolio.profit.30d")}
           value={props.totalProfit}
           visible={props.visible}
           unit="USDC"
         />
         <AssetDetail
-          label="Max Drawdown(30 days)"
+          label={t("extend.portfolio.maxdrawdown")}
           value={props.maxDrawdown}
           visible={props.visible}
           unit="USDC"
         />
         <AssetDetail
-          label="Total deposit(30 days)"
+          label={t("extend.portfolio.total.deposit")}
           value={props.totalDeposit}
           visible={props.visible}
           unit="USDC"
         />
         <AssetDetail
-          label="Total withdrwal(30 days)"
+          label={t("extend.portfolio.total.withdraw")}
           value={props.totalWithdrawal}
           visible={props.visible}
           unit="USDC"
