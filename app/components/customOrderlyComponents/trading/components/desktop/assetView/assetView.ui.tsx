@@ -384,7 +384,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           placeholder="--"
           unit="X"
         />
-        <AssetDetail
+        {/* <AssetDetail
           label={t("transfer.LTV.currentLTV")}
           // description={t("trading.asset.maintenanceMarginRatio.tooltip")}
           // formula={t("trading.asset.maintenanceMarginRatio.formula")}
@@ -393,7 +393,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           rule="percentages"
           showPercentage={true}
           placeholder="--%"
-        />
+        /> */}
         {showLTV && <LTVDetail visible={visible} value={currentLtv} />}
       </Box>
     </Box>
