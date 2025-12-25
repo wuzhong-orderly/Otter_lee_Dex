@@ -277,6 +277,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
     currentLtv,
     unrealPnL,
     currentLeverage,
+    totalMM
   } = props;
 
   const [optionsOpen, setOptionsOpen] = useLocalStorage(
@@ -363,7 +364,7 @@ const AssetValueList: FC<AssetValueListProps> = (props) => {
           description={t("extend.common.MM.tooltip")}
           formula={t("extend.common.MM.formula")}
           visible={visible}
-          value={freeCollateral! === 0 ? ("0" as any) : freeCollateral}
+          value={totalMM! === 0 ? ("0" as any) : totalMM}
           unit="USDC"
         />
         <AssetDetail
