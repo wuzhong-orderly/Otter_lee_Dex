@@ -44,6 +44,33 @@ export const usePositionHistoryColumn = (props: {
             <SymbolInfo record={record} onSymbolChange={onSymbolChange} />
           ),
         },
+        // status
+        {
+          title: t("common.status"),
+          dataIndex: "status",
+          fixed: "left",
+          width: 150,
+          render: (value: string, record) => {
+            const status = record.position_status;
+            let color: "neutral" | "primary" | "warning" = "neutral";
+            let text: string;
+            if (status === "closed") {
+              color = "neutral";
+              text = t("positions.history.status.closed");
+            } else if (status === "partial_closed") {
+              color = "primary";
+              text = t("positions.history.status.partialClosed");
+            } else {
+              color = "warning";
+              text = capitalizeFirstLetter(status.replace("_", " ")) || "";
+            }
+            return (
+              <Badge color={color} size="xs" className="oui-whitespace-nowrap oui-break-normal">
+                {text}
+              </Badge>
+            );
+          },
+        },
         // quantity
         {
           title: t("positions.history.column.closed&maxClosed"),
@@ -200,16 +227,16 @@ export const SymbolInfo = (props: {
       }
     };
 
-    list.push(
-      <Badge
-        key={`status-${status}`}
-        color={status !== "closed" ? "primaryLight" : "neutral"}
-        size="xs"
-        className="oui-whitespace-nowrap oui-break-normal"
-      >
-        {renderStatus()}
-      </Badge>,
-    );
+    // list.push(
+    //   <Badge
+    //     key={`status-${status}`}
+    //     color={status !== "closed" ? "primaryLight" : "neutral"}
+    //     size="xs"
+    //     className="oui-whitespace-nowrap oui-break-normal"
+    //   >
+    //     {renderStatus()}
+    //   </Badge>,
+    // );
 
     if (record.type === "adl") {
       list.push(
