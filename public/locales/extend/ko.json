@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "총 수익 (30일)",
   "extend.portfolio.maxdrawdown": "최대 하락폭 (30일)",
   "extend.portfolio.total.deposit": "총 입금 (30일)",
-  "extend.portfolio.total.withdraw": "총 출금 (30일)"
+  "extend.portfolio.total.withdraw": "총 출금 (30일)",
+  "extend.positions.history.column.remainingPosition": "남은 포지션"
 }

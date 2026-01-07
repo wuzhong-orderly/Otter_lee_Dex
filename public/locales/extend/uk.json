@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Загальний прибуток (30 днів)",
   "extend.portfolio.maxdrawdown": "Максимальна просадка (30 днів)",
   "extend.portfolio.total.deposit": "Загальний депозит (30 днів)",
-  "extend.portfolio.total.withdraw": "Загальне зняття (30 днів)"
+  "extend.portfolio.total.withdraw": "Загальне зняття (30 днів)",
+  "extend.positions.history.column.remainingPosition": "Залишкова позиція"
 }

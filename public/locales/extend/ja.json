@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "合計利益（30日間）",
   "extend.portfolio.maxdrawdown": "最大ドローダウン（30日間）",
   "extend.portfolio.total.deposit": "合計入金（30日間）",
-  "extend.portfolio.total.withdraw": "合計出金（30日間）"
+  "extend.portfolio.total.withdraw": "合計出金（30日間）",
+  "extend.positions.history.column.remainingPosition": "残りのポジション"
 }

@@ -16,4 +16,5 @@
   "extend.portfolio.maxdrawdown": "Maksymalny spadek (30 dni)",
   "extend.portfolio.total.deposit": "Całkowity depozyt (30 dni)",
   "extend.portfolio.total.withdraw": "Całkowite wypłaty (30 dni)"
+  "extend.positions.history.column.remainingPosition": "Pozostała pozycja"
 }

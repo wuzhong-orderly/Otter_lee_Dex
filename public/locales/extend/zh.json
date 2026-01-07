@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "总利润（30天）",
   "extend.portfolio.maxdrawdown": "最大回撤（30天）",
   "extend.portfolio.total.deposit": "总存款（30天）",
-  "extend.portfolio.total.withdraw": "总提款（30天）"
+  "extend.portfolio.total.withdraw": "总提款（30天）",
+  "extend.positions.history.column.remainingPosition": "剩余仓位"
 }

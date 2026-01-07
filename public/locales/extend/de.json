@@ -16,4 +16,5 @@
   "extend.portfolio.maxdrawdown": "Maximaler Drawdown (30 Tage)",
   "extend.portfolio.total.deposit": "Gesamteinzahlung (30 Tage)",
   "extend.portfolio.total.withdraw": "Gesamtabhebung (30 Tage)"
+  "extend.positions.history.column.remainingPosition": "Verbleibende Position"
 }

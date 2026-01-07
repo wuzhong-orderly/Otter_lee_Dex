@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Toplam kâr (30 gün)",
   "extend.portfolio.maxdrawdown": "Maksimum düşüş (30 gün)",
   "extend.portfolio.total.deposit": "Toplam yatırım (30 gün)",
-  "extend.portfolio.total.withdraw": "Toplam çekim (30 gün)"
+  "extend.portfolio.total.withdraw": "Toplam çekim (30 gün)",
+  "extend.positions.history.column.remainingPosition": "Kalan Pozisyon"
 }

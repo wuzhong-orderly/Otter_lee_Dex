@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Lucro total (30 dias)",
   "extend.portfolio.maxdrawdown": "Perda máxima (30 dias)",
   "extend.portfolio.total.deposit": "Depósito total (30 dias)",
-  "extend.portfolio.total.withdraw": "Retirada total (30 dias)"
+  "extend.portfolio.total.withdraw": "Retirada total (30 dias)",
+  "extend.positions.history.column.remainingPosition": "Posição restante"
 }

@@ -19,6 +19,7 @@ import { useSymbolContext } from "../../../provider/symbolContext";
 import { FundingFeeButton } from "../../fundingFeeHistory/fundingFeeButton";
 import { ShareButtonWidget } from "../../positions/desktop/shareButton";
 import { PositionHistoryExt } from "../positionHistory.script";
+import { usePositionStream } from "@orderly.network/hooks";
 
 export const usePositionHistoryColumn = (props: {
   onSymbolChange?: (symbol: API.Symbol) => void;
@@ -69,6 +70,36 @@ export const usePositionHistoryColumn = (props: {
                 {text}
               </Badge>
             );
+          },
+        },
+        // remaining position
+        {
+          title: t("extend.positions.history.column.remainingPosition"),
+          dataIndex: "remaining_position",
+          width: 140,
+          render: (_: any, record) => {
+            // 只在 partially closed 状态时显示剩余仓位  
+            if (record.position_status === "partial_closed") {
+              // 获取当前持仓数据  
+              const [currentPositions] = usePositionStream(record.symbol, {
+                calcMode: "markPrice"
+              });
+
+              // 找到该symbol的当前持仓  
+              const currentPosition = currentPositions?.rows?.find(
+                p => p.symbol === record.symbol && p.position_qty !== 0
+              );
+
+              if (currentPosition) {
+                const { base_dp } = useSymbolContext();
+                return (
+                  <Text.numeral dp={base_dp} padding={false}>
+                    {Math.abs(currentPosition.position_qty)}
+                  </Text.numeral>
+                );
+              }
+            }
+            return "--";
           },
         },
         // quantity

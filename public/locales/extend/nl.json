@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Totale winst (30 dagen)",
   "extend.portfolio.maxdrawdown": "Maximale verlies (30 dagen)",
   "extend.portfolio.total.deposit": "Totale storting (30 dagen)",
-  "extend.portfolio.total.withdraw": "Totale opname (30 dagen)"
+  "extend.portfolio.total.withdraw": "Totale opname (30 dagen)",
+  "extend.positions.history.column.remainingPosition": "Resterende positie"
 }

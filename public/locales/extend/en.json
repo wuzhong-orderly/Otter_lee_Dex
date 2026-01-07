@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Total profit(30 days)",
   "extend.portfolio.maxdrawdown": "Max drawdown(30 days)",
   "extend.portfolio.total.deposit": "Total deposit(30 days)",
-  "extend.portfolio.total.withdraw": "Total withdraw(30 days)"
+  "extend.portfolio.total.withdraw": "Total withdraw(30 days)",
+  "extend.positions.history.column.remainingPosition": "Remaining Position"
 }

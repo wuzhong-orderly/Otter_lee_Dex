@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Tổng lợi nhuận (30 ngày)",
   "extend.portfolio.maxdrawdown": "Mức giảm tối đa (30 ngày)",
   "extend.portfolio.total.deposit": "Tổng nạp (30 ngày)",
-  "extend.portfolio.total.withdraw": "Tổng rút (30 ngày)"
+  "extend.portfolio.total.withdraw": "Tổng rút (30 ngày)",
+  "extend.positions.history.column.remainingPosition": "Vị trí còn lại"
 }

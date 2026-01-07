@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Total keuntungan (30 hari)",
   "extend.portfolio.maxdrawdown": "Penurunan maksimal (30 hari)",
   "extend.portfolio.total.deposit": "Total deposit (30 hari)",
-  "extend.portfolio.total.withdraw": "Total penarikan (30 hari)"
+  "extend.portfolio.total.withdraw": "Total penarikan (30 hari)",
+  "extend.positions.history.column.remainingPosition": "posisi tersisa "
 }

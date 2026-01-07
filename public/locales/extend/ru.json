@@ -15,5 +15,6 @@
   "extend.portfolio.profit.30d": "Общая прибыль (30 дней)",
   "extend.portfolio.maxdrawdown": "Максимальная просадка (30 дней)",
   "extend.portfolio.total.deposit": "Общий депозит (30 дней)",
-  "extend.portfolio.total.withdraw": "Общее снятие (30 дней)"
+  "extend.portfolio.total.withdraw": "Общее снятие (30 дней)",
+  "extend.positions.history.column.remainingPosition": "Оставшаяся позиция"
 }
