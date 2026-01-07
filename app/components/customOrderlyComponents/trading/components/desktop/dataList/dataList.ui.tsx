@@ -18,7 +18,7 @@ import {
   LiquidationWidget,
   PositionHistoryWidget,
   PositionsWidget,
-} from "@orderly.network/ui-positions";
+} from "@/components/customOrderlyComponents/ui-positions";
 import { DataListState, DataListTabType } from "./dataList.script";
 
 const LazySettingWidget = React.lazy(() =>
