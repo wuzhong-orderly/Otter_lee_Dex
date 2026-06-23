@@ -26,7 +26,8 @@ import {
 } from "@orderly.network/hooks";
 import {
   SideMarketsWidget,
-  SymbolInfoBarFullWidget,
+  SymbolInfoBarFull,
+  useSymbolInfoBarFullScript,
   HorizontalMarketsWidget,
 } from "@orderly.network/markets";
 import {
@@ -37,6 +38,7 @@ import { Box, cn, Flex } from "@orderly.network/ui";
 import { OrderEntryWidget } from "@orderly.network/ui-order-entry";
 import { TradingviewWidget } from "@orderly.network/ui-tradingview";
 import { DepositStatusWidget } from "@orderly.network/ui-transfer";
+import { applyBrokerMarketVolume, useBrokerMarketVolumeMap } from "@/hooks/useBrokerMarketVolumes";
 import { SortablePanel } from "../../components/desktop/layout/sortablePanel";
 import { SplitLayout } from "../../components/desktop/layout/splitLayout";
 import { showRwaOutsideMarketHoursNotify } from "../../components/desktop/notify/rwaNotification";
@@ -104,6 +106,27 @@ const LazyOrderBookAndTradesWidget = React.lazy(() =>
 
 export type DesktopLayoutProps = TradingState & {
   className?: string;
+};
+
+type BrokerSymbolInfoBarFullWidgetProps = {
+  symbol: string;
+  onSymbolChange?: DesktopLayoutProps["onSymbolChange"];
+  closeCountdown?: () => void;
+  showCountdown?: boolean;
+  trailing?: React.ReactNode;
+};
+
+const BrokerSymbolInfoBarFullWidget: React.FC<BrokerSymbolInfoBarFullWidgetProps> = (props) => {
+  const state = useSymbolInfoBarFullScript({ symbol: props.symbol });
+  const volumeMap = useBrokerMarketVolumeMap();
+
+  return (
+    <SymbolInfoBarFull
+      {...state}
+      {...props}
+      data={applyBrokerMarketVolume(state.data, volumeMap)}
+    />
+  );
 };
 
 const scaleModifier: Modifier = ({
@@ -359,7 +382,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = (props) => {
         height: symbolInfoBarHeight,
       }}
     >
-      <SymbolInfoBarFullWidget
+      <BrokerSymbolInfoBarFullWidget
         symbol={props.symbol}
         onSymbolChange={props.onSymbolChange}
         closeCountdown={closeCountdown}

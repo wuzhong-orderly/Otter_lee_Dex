@@ -3,7 +3,8 @@ import { useGetRwaSymbolInfo } from "@orderly.network/hooks";
 import { useTranslation } from "@orderly.network/i18n";
 import {
   MarketsSheetWidget,
-  SymbolInfoBarWidget,
+  SymbolInfoBar,
+  useSymbolInfoBarScript,
 } from "@orderly.network/markets";
 import {
   Box,
@@ -14,9 +15,29 @@ import {
   Text,
   NewsFillIcon,
 } from "@orderly.network/ui";
+import { applyBrokerMarketVolume, useBrokerMarketVolumeMap } from "@/hooks/useBrokerMarketVolumes";
 import { Countdown } from "../../components/base/countdown";
 import { showRwaOutsideMarketHoursNotify } from "../../components/desktop/notify/rwaNotification";
 import type { TradingState } from "./trading.script";
+
+type BrokerSymbolInfoBarWidgetProps = {
+  symbol: string;
+  onSymbol?: () => void;
+  trailing?: React.ReactNode;
+};
+
+const BrokerSymbolInfoBarWidget: React.FC<BrokerSymbolInfoBarWidgetProps> = (props) => {
+  const state = useSymbolInfoBarScript({ symbol: props.symbol });
+  const volumeMap = useBrokerMarketVolumeMap();
+
+  return (
+    <SymbolInfoBar
+      {...state}
+      {...props}
+      data={applyBrokerMarketVolume(state.data, volumeMap)}
+    />
+  );
+};
 
 const LazyTopTabWidget = React.lazy(() =>
   import("../../components/mobile/topTab").then((mod) => {
@@ -104,7 +125,7 @@ export const MobileLayout: React.FC<TradingState> = (props) => {
   }, [isRwa, open, closeTimeInterval]);
 
   const symbolInfoBar = (
-    <SymbolInfoBarWidget
+    <BrokerSymbolInfoBarWidget
       symbol={props.symbol}
       onSymbol={() => props.onOpenMarketsSheetChange(true)}
       trailing={

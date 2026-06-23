@@ -7,11 +7,11 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_ORDERLY_MAINNET_CHAINS": "42161,10,8453,1,56,900900900",
   "VITE_ORDERLY_TESTNET_CHAINS": "421614,97,901901901,11124",
   "VITE_DEFAULT_CHAIN": "",
-  "VITE_PRIVY_APP_ID": "cmcbqfeef004wl40m3jlc1tdz",
+  "VITE_PRIVY_APP_ID": "",
   "VITE_PRIVY_LOGIN_METHODS": "email,passkey,twitter,google",
   "VITE_PRIVY_TERMS_OF_USE": "",
   "VITE_ENABLE_ABSTRACT_WALLET": "true",
-  "VITE_DISABLE_EVM_WALLETS": "false",
+  "VITE_DISABLE_EVM_WALLETS": "true",
   "VITE_DISABLE_SOLANA_WALLETS": "false",
   "VITE_WALLETCONNECT_PROJECT_ID": "34b79edc0603a7f1c0aef124674c14f2",
   "VITE_APP_NAME": "Otter liquid",
@@ -37,5 +37,7 @@ window.__RUNTIME_CONFIG__ = {
   "VITE_USE_CUSTOM_PNL_POSTERS": "true",
   "VITE_CUSTOM_PNL_POSTER_COUNT": "1",
   "VITE_TRADING_VIEW_COLOR_CONFIG": "{\"upColor\":\"#0d00c7\",\"downColor\":\"#f7dc55\",\"pnlUpColor\":\"#c7b600\",\"pnlDownColor\":\"#ff9ea6\",\"chartBG\":\"#ffffff\"}",
-  "VITE_ANALYTICS_SCRIPT": ""
+  "VITE_ANALYTICS_SCRIPT": "",
+  "VITE_VOLUME_BROKER_ID": "halfmoon",
+  "VITE_VOLUME_BOOSTER": "1"
 };

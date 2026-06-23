@@ -1,17 +1,82 @@
-import { ReactNode, useCallback, lazy, Suspense } from "react";
+import { ReactNode, useCallback, lazy, Suspense, useMemo } from "react";
 import { OrderlyAppProvider } from "@orderly.network/react-app";
 import { useOrderlyConfig } from "@/utils/config";
-import type { NetworkId } from "@orderly.network/types";
+import type { API, NetworkId } from "@orderly.network/types";
+import { useWS } from "@orderly.network/hooks";
 import { LocaleProvider, LocaleCode, LocaleEnum, defaultLanguages } from "@orderly.network/i18n";
 import { withBasePath } from "@/utils/base-path";
 import { getSEOConfig, getUserLanguage } from "@/utils/seo";
 import { getRuntimeConfigBoolean, getRuntimeConfigArray, getRuntimeConfig } from "@/utils/runtime-config";
 import { DemoGraduationChecker } from "@/components/DemoGraduationChecker";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
+import {
+	applyBrokerMarketVolume,
+	BrokerMarketVolumeMap,
+	BrokerMarketVolumeProvider,
+	useBrokerMarketVolumes,
+} from "@/hooks/useBrokerMarketVolumes";
 import ServiceDisclaimerDialog from "./ServiceRestrictionsDialog";
 // import { useIpRestriction } from "@/hooks/useIpRestriction";
 
 const NETWORK_ID_KEY = "orderly_network_id";
+const BROKER_VOLUME_PATCHED_WS = Symbol.for("otter.brokerVolumePatchedWs");
+const BROKER_VOLUME_MAP_WS = Symbol.for("otter.brokerVolumeMapWs");
+
+const createBrokerVolumeDataAdapter = (volumeMap: BrokerMarketVolumeMap) => {
+	return {
+		symbolList(original: API.MarketInfoExt[]) {
+			return original.map((item) => applyBrokerMarketVolume(item, volumeMap));
+		},
+	};
+};
+
+const BrokerVolumeStreamAdapter = ({
+	children,
+	volumeMap,
+}: {
+	children: ReactNode;
+	volumeMap: BrokerMarketVolumeMap;
+}) => {
+	const ws = useWS();
+	const patchedWs = ws as typeof ws & {
+		[BROKER_VOLUME_PATCHED_WS]?: boolean;
+		[BROKER_VOLUME_MAP_WS]?: BrokerMarketVolumeMap;
+		subscribe: (topic: string, options?: { onMessage?: (message: unknown) => void }) => unknown;
+	};
+
+	patchedWs[BROKER_VOLUME_MAP_WS] = volumeMap;
+
+	if (!patchedWs[BROKER_VOLUME_PATCHED_WS]) {
+		const subscribe = patchedWs.subscribe.bind(patchedWs);
+
+		patchedWs.subscribe = (topic, options = {}) => {
+			return subscribe(topic, {
+				...options,
+				onMessage: (message: unknown) => {
+					if (topic === "tickers" && Array.isArray(message)) {
+						options.onMessage?.(
+							message.map((item) => applyBrokerMarketVolume(item, patchedWs[BROKER_VOLUME_MAP_WS] ?? new Map()))
+						);
+						return;
+					}
+
+					if (topic.endsWith("@ticker") && message && typeof message === "object") {
+						options.onMessage?.(
+							applyBrokerMarketVolume(message as { symbol?: string }, patchedWs[BROKER_VOLUME_MAP_WS] ?? new Map())
+						);
+						return;
+					}
+
+					options.onMessage?.(message);
+				},
+			});
+		};
+
+		patchedWs[BROKER_VOLUME_PATCHED_WS] = true;
+	}
+
+	return children;
+};
 
 const getNetworkId = (): NetworkId => {
 	if (typeof window === "undefined") return "mainnet";
@@ -72,6 +137,12 @@ const WalletConnector = lazy(() => import("@/components/orderlyProvider/walletCo
 const OrderlyProvider = (props: { children: ReactNode }) => {
 	const config = useOrderlyConfig();
 	const networkId = getNetworkId();
+	const brokerId = getRuntimeConfig('VITE_ORDERLY_BROKER_ID');
+	const brokerVolumeMap = useBrokerMarketVolumes();
+	const brokerVolumeDataAdapter = useMemo(
+		() => createBrokerVolumeDataAdapter(brokerVolumeMap),
+		[brokerVolumeMap]
+	);
 	// const { isRestricted } = useIpRestriction();
 
 	const privyAppId = getRuntimeConfig('VITE_PRIVY_APP_ID');
@@ -171,18 +242,23 @@ const OrderlyProvider = (props: { children: ReactNode }) => {
 
 	const appProvider = (
 		<OrderlyAppProvider
-			brokerId={getRuntimeConfig('VITE_ORDERLY_BROKER_ID')}
+			brokerId={brokerId}
 			brokerName={getRuntimeConfig('VITE_ORDERLY_BROKER_NAME')}
 			networkId={networkId}
 			onChainChanged={onChainChanged}
 			appIcons={config.orderlyAppProvider.appIcons}
+			dataAdapter={brokerVolumeDataAdapter}
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			{...(chainFilter && { chainFilter } as any)}
 			defaultChain={defaultChain}
 		>
-			<DemoGraduationChecker />
-			<ServiceDisclaimerDialog isRestricted={false} />
-			{props.children}
+			<BrokerMarketVolumeProvider volumeMap={brokerVolumeMap}>
+				<BrokerVolumeStreamAdapter volumeMap={brokerVolumeMap}>
+					<DemoGraduationChecker />
+					<ServiceDisclaimerDialog isRestricted={false} />
+					{props.children}
+				</BrokerVolumeStreamAdapter>
+			</BrokerMarketVolumeProvider>
 		</OrderlyAppProvider>
 	);
 
